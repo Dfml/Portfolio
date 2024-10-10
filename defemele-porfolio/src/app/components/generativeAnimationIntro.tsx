@@ -16,7 +16,7 @@ const CanvasComponent = () => {
 
 
 
-    const plusSize = 50; // Tamaño de cada símbolo "+"
+    const plusSize = 100; // Tamaño de cada símbolo "+"
     const padding = 100; // Espacio entre cada símbolo "+"
     const rows = Math.floor(canvas.height / padding); // Número de filas
     const cols = Math.floor(canvas.width / padding); // Número de columnas
@@ -24,8 +24,8 @@ const CanvasComponent = () => {
     const symbols: { x: number, y: number, opacity: number, scale: number }[] = [];
 
     // Crear los símbolos "+" en una cuadrícula
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
+    for (let row = 0; row < rows+1; row++) {
+      for (let col = 0; col < cols+1; col++) {
         const x = col * padding + padding / 2; // Posición X
         const y = row * padding + padding / 2; // Posición Y
         symbols.push({ x, y, opacity: 0, scale: 0 });
@@ -62,7 +62,7 @@ const CanvasComponent = () => {
       let opacity = 0;
       let scale = 0;
 
-      const duration = 50; // Duración de la animación en milisegundos
+      const duration = 10; // Duración de la animación en milisegundos
       const startTime = performance.now();
 
       const animate = (time: number) => {
@@ -95,11 +95,11 @@ const CanvasComponent = () => {
     
     setTimeout(() => {
       animateSymbols(0);
-    }, 3000);
+    }, 7000);
   }, []);
 
 
-  return <canvas ref={canvasRef}  className=' absolute w-full h-full left-0 top-0' />;
+  return <canvas ref={canvasRef}  className=' absolute w-full h-full left-0 top-0 z-10' />;
 };
 
 export default CanvasComponent;
